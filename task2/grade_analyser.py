@@ -2,15 +2,15 @@ import csv
 
 def get_classification(average):
     if average >= 70:
-        return "1"
+        return '1'
     elif average >= 60:
-        return "2:1"
+        return '2:1'
     elif average >= 50:
-        return "2:2"
+        return '2:2'
     elif average >= 40:
-        return "3"
+        return '3'
     else:
-        return "F"
+        return 'F'
     
 def calculate_grades(input_filename):
     output_filename = f"{input_filename}_out.csv"
@@ -21,8 +21,12 @@ def calculate_grades(input_filename):
 
         for row in reader:
             student_id = row[0]
-            grades = [int(grade) for grade in row[1:] if grade]
-            
+            try:
+                grades = [int(grade) for grade in row[1:] if grade]
+            except ValueError:
+                print(f"Non-numeric data found for student{student_id},skipping invalid entries.")
+                continue
+
             if grades:
                 average_grade = sum(grades) / len(grades)
                 classification = get_classification(average_grade)
