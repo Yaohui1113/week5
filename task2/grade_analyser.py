@@ -28,8 +28,6 @@ def calculate_grades(input_filename):
                 average_grade = sum(grades) / len(grades)
                 classification = get_classification(average_grade)
                 writer.writerow([student_id, f"{average_grade:.2f}", classification])
-                
-    print(f"Grades calculated and saved to {output_filename}")
 
 input_filename = input("Enter the filename of the student file: ")
 calculate_grades(input_filename)
