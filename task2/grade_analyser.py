@@ -19,8 +19,6 @@ def calculate_grades(input_filename):
         reader = csv.reader(infile)
         writer = csv.writer(outfile)
 
-        writer.writerow(["student_id", "average_grade", "classification"])
-
         for row in reader:
             student_id = row[0]
             grades = [int(grade) for grade in row[1:] if grade]
