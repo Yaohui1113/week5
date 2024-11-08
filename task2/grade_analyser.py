@@ -22,6 +22,7 @@ def calculate_grades(input_filename):
         for row in reader:
             student_id = row[0]
             grades = [int(grade) for grade in row[1:] if grade]
+            
             if grades:
                 average_grade = sum(grades) / len(grades)
                 classification = get_classification(average_grade)
